@@ -1,0 +1,30 @@
+{
+  "name": "csinterface",
+  "version": "0.1.0",
+  "description": "TypeScript version of Adobe CSInterface",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ExtendScript/CSInterface.git"
+  },
+  "keywords": [
+    "CSInterface",
+    "CEP",
+    "Adobe",
+    "ExtendScript",
+    "TypeScript"
+  ],
+  "author": "Manuel Pogge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ExtendScript/CSInterface/issues"
+  },
+  "homepage": "https://github.com/ExtendScript/CSInterface#readme",
+  "devDependencies": {
+    "@types/node": "^8.6.0",
+    "typescript": "^3.6.0"
+  }
+}
