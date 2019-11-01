@@ -515,7 +515,7 @@ export default class CSInterface {
      * @param callback  Optional. A callback function that receives the result of execution.
      *          If execution fails, the callback function receives the error message EvalScript_ErrMessage.
      */
-    evalScript(script: string, callback: (result?: any) => void | null): void {
+    evalScript(script: string, callback?: (result?: any) => void | null): void {
         if (callback === null || callback === undefined) {
             callback = function (result) {
             };

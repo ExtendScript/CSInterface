@@ -1,6 +1,6 @@
 import * as CSInterface from "./v9";
 
-export function evalScript(script: string, callback: (result?: any) => void): Promise<any> {
+export function evalScript(script: string, callback?: (result?: any) => void): Promise<any> {
     /**
      *
      * @param {*} value
