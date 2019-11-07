@@ -95,5 +95,6 @@ interface Window {
         resizeContent: Function
         setScaleFactorChangedHandler: Function
         showAAM: Function
+        loadSnapshot: Function
     }
 }
