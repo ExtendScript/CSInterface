@@ -471,7 +471,7 @@ export default class CSInterface {
     /**
      * Retrieves information about the host environment in which the extension is currently running.
      *
-     * @return A HostEnvironment object.
+     * @return {HostEnvironment} A HostEnvironment object.
      */
     getHostEnvironment(): HostEnvironment {
         return JSON.parse(window.__adobe_cep__.getHostEnvironment());
@@ -489,7 +489,7 @@ export default class CSInterface {
      *
      * @param pathType The path-type constant defined in SystemPath ,
      *
-     * @return The platform-specific system path string.
+     * @return {string} The platform-specific system path string.
      */
     getSystemPath(pathType: SystemPath): string {
 
@@ -525,7 +525,7 @@ export default class CSInterface {
      * Retrieves the unique identifier of the application.
      * in which the extension is currently running.
      *
-     * @return The unique ID string.
+     * @return {string} The unique ID string.
      */
     getApplicationID(): string {
         return this.hostEnvironment.appId;
@@ -535,7 +535,7 @@ export default class CSInterface {
      * Retrieves host capability information for the application
      * in which the extension is currently running.
      *
-     * @return A HostCapabilities object.
+     * @return {HostCapabilities} A HostCapabilities object.
      */
     getHostCapabilities(): HostCapabilities {
         return JSON.parse(window.__adobe_cep__.getHostCapabilities());
@@ -608,7 +608,7 @@ export default class CSInterface {
      * @param extensionIds  Optional, an array of unique identifiers for extensions of interest.
      *          If omitted, retrieves data for all extensions.
      *
-     * @return Zero or more Extension objects.
+     * @return {Extension[]} Zero or more Extension objects.
      */
     getExtensions(extensionIds?: string[]): Extension[] {
         const extensionIdsStr = JSON.stringify(extensionIds);
@@ -623,7 +623,7 @@ export default class CSInterface {
      *
      * Retrieves network-related preferences.
      *
-     * @return A JavaScript object containing network preferences.
+     * @return {Object} A JavaScript object containing network preferences.
      */
     getNetworkPreferences(): object {
         return JSON.parse(window.__adobe_cep__.getNetworkPreferences());
@@ -644,7 +644,7 @@ export default class CSInterface {
      *
      * <code><input type="submit" value="" data-locale="key"/></code>
      *
-     * @return An object containing the resource bundle information.
+     * @return {Object} An object containing the resource bundle information.
      */
     initResourceBundle(): object {
         const resourceBundle = JSON.parse(window.__adobe_cep__.initResourceBundle());
@@ -675,7 +675,7 @@ export default class CSInterface {
     /**
      * Writes installation information to a file.
      *
-     * @return The file path.
+     * @return {string} The file path.
      */
     dumpInstallationInfo(): string {
         return window.__adobe_cep__.dumpInstallationInfo();
@@ -685,14 +685,14 @@ export default class CSInterface {
      * Retrieves version information for the current Operating System,
      * See http://www.useragentstring.com/pages/Chrome/ for Chrome navigator.userAgent values.
      *
-     * @return A string containing the OS version, or "unknown Operation System".
+     * @return {string} A string containing the OS version, or "unknown Operation System".
      * If user customizes the User Agent by setting CEF command parameter "--user-agent", only
      * "Mac OS X" or "Windows" will be returned.
      */
     getOSInformation(): string {
         const userAgent = navigator.userAgent;
 
-        if ((navigator.platform == "Win32") || (navigator.platform == "Windows")) {
+        if ((navigator.platform === "Win32") || (navigator.platform === "Windows")) {
             let winVersion = "Windows";
             let winBit = "";
             if (userAgent.indexOf("Windows") > -1) {
@@ -722,7 +722,7 @@ export default class CSInterface {
             }
 
             return winVersion + winBit;
-        } else if ((navigator.platform == "MacIntel") || (navigator.platform == "Macintosh")) {
+        } else if ((navigator.platform === "MacIntel") || (navigator.platform === "Macintosh")) {
             let result = "Mac OS X";
 
             if (userAgent.indexOf("Mac OS X") > -1) {
@@ -748,7 +748,7 @@ export default class CSInterface {
      *   "file:///C:/log.txt"
      *   "mailto:test@adobe.com"
      *
-     * @return One of these error codes:\n
+     * @return {number} One of these error codes:\n
      *      <ul>
      *          <li>NO_ERROR - 0</li>
      *          <li>ERR_UNKNOWN - 1</li>
@@ -766,7 +766,7 @@ export default class CSInterface {
      *
      * @since 4.2.0
      *
-     * @return extension ID.
+     * @return {string} extension ID.
      */
     getExtensionID(): string {
         return window.__adobe_cep__.getExtensionId();
@@ -779,7 +779,7 @@ export default class CSInterface {
      *
      * @since 4.2.0
      *
-     * @return One of the following float number.
+     * @return {number} One of the following float number.
      *      <ul>
      *          <li> -1.0 when error occurs </li>
      *          <li> 1.0 means normal screen </li>
@@ -852,7 +852,7 @@ export default class CSInterface {
      * @param enabled        True to enable the item, false to disable it (gray it out).
      * @param checked        True to select the item, false to deselect it.
      *
-     * @return false when the host application does not support this functionality (HostCapabilities.EXTENDED_PANEL_MENU is false).
+     * @return {boolean} false when the host application does not support this functionality (HostCapabilities.EXTENDED_PANEL_MENU is false).
      *         Fails silently if menu label is invalid.
      *
      * @see HostCapabilities.EXTENDED_PANEL_MENU
@@ -995,7 +995,7 @@ export default class CSInterface {
      *
      * @since 6.0.0
      *
-     * @return true if the extension window is visible; false if the extension window is hidden.
+     * @return {boolean} true if the extension window is visible; false if the extension window is hidden.
      */
     isWindowVisible(): boolean {
         return window.__adobe_cep__.invokeSync("isWindowVisible", "");
@@ -1104,7 +1104,7 @@ export default class CSInterface {
      *
      * @since 6.1.0
      *
-     * @return The window title.
+     * @return {string} The window title.
      */
     getWindowTitle(): string {
         return window.__adobe_cep__.invokeSync("getWindowTitle", "");
