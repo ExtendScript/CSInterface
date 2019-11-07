@@ -1,5 +1,3 @@
-/// <reference path="../window.d.ts" />
-
 /**
  * Stores constants for the window types supported by the CSXS infrastructure.
  */
@@ -617,7 +615,7 @@ export default class CSInterface {
         const extensionsStr = window.__adobe_cep__.getExtensions(extensionIdsStr);
 
         return JSON.parse(extensionsStr);
-    };
+    }
 
 
     /**
@@ -629,7 +627,7 @@ export default class CSInterface {
      */
     getNetworkPreferences(): object {
         return JSON.parse(window.__adobe_cep__.getNetworkPreferences());
-    };
+    }
 
 
     /**
@@ -672,7 +670,7 @@ export default class CSInterface {
             }
         }
         return resourceBundle;
-    };
+    }
 
     /**
      * Writes installation information to a file.
@@ -811,7 +809,7 @@ export default class CSInterface {
      */
     getCurrentApiVersion(): ApiVersion {
         return JSON.parse(window.__adobe_cep__.getCurrentApiVersion());
-    };
+    }
 
     /**
      * Set panel flyout menu by an XML.
@@ -900,7 +898,7 @@ export default class CSInterface {
      */
     setContextMenu(menu: string, callback: (menuItemID: string) => void): void {
         window.__adobe_cep__.invokeAsync("setContextMenu", menu, callback);
-    };
+    }
 
     /**
      * Set context menu by JSON string.
@@ -973,7 +971,7 @@ export default class CSInterface {
      */
     setContextMenuByJSON(menu: string, callback: (menuItemID: string) => void): void {
         window.__adobe_cep__.invokeAsync("setContextMenuByJSON", menu, callback);
-    };
+    }
 
 
     /**
@@ -988,7 +986,7 @@ export default class CSInterface {
     updateContextMenuItem(menuItemID: string, enabled: boolean, checked: boolean): void {
         const itemStatus = new ContextMenuItemStatus(menuItemID, enabled, checked);
         window.__adobe_cep__.invokeSync("updateContextMenuItem", JSON.stringify(itemStatus));
-    };
+    }
 
 
     /**
@@ -1000,7 +998,7 @@ export default class CSInterface {
      */
     isWindowVisible(): boolean {
         return window.__adobe_cep__.invokeSync("isWindowVisible", "");
-    };
+    }
 
     /**
      * Resize extension's content to the specified dimensions.
@@ -1022,7 +1020,7 @@ export default class CSInterface {
      */
     resizeContent(width: number, height: number): void {
         window.__adobe_cep__.resizeContent(width, height);
-    };
+    }
 
 
     /**
@@ -1038,7 +1036,7 @@ export default class CSInterface {
      */
     registerInvalidCertificateCallback(callback: () => void): void {
         return window.__adobe_cep__.registerInvalidCertificateCallback(callback);
-    };
+    }
 
     /**
      * Register an interest in some key events to prevent them from being sent to the host application.
@@ -1083,7 +1081,7 @@ export default class CSInterface {
      */
     registerKeyEventsInterest(keyEventsInterest: string): void {
         return window.__adobe_cep__.registerKeyEventsInterest(keyEventsInterest);
-    };
+    }
 
 
     /**
@@ -1096,7 +1094,7 @@ export default class CSInterface {
      */
     setWindowTitle(title: string): void {
         window.__adobe_cep__.invokeSync("setWindowTitle", title);
-    };
+    }
 
 
     /**
@@ -1109,5 +1107,5 @@ export default class CSInterface {
      */
     getWindowTitle(): string {
         return window.__adobe_cep__.invokeSync("getWindowTitle", "");
-    };
+    }
 }
