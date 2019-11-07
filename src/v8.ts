@@ -757,7 +757,8 @@ export default class CSInterface {
      *      </ul>\n
      */
     openURLInDefaultBrowser(url: string): number {
-        return window.cep.util.openURLInDefaultBrowser(url);
+        const result = window.cep.util.openURLInDefaultBrowser(url);
+        return result.err;
     }
 
     /**
