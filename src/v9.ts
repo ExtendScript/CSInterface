@@ -29,7 +29,7 @@ export default class CSInterface extends CSInterfaceV8 {
     getMonitorScaleFactor(): number {
 
         if (navigator.appVersion.toLowerCase().indexOf("windows") ===  -1) {
-            throw Error('OS not supported');
+            throw Error('Operation System not supported');
         }
 
         return window.__adobe_cep__.getMonitorScaleFactor();
