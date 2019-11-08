@@ -75,7 +75,7 @@ declare class FS {
      * @param fileTypes {Array.<string>} The file extensions (without the dot) for the types
      *      of files that can be selected. Ignored when chooseDirectory=true.
      *
-     * @return An object with these properties:
+     * @return {Object} An object with these properties:
      *      <ul><li>"data": An array of the full names of the selected files.</li>
      *          <li>"err": The status of the operation, one of
      *          <br>NO_ERROR
@@ -102,7 +102,7 @@ declare class FS {
      *          friendlyFilePrefix = "Images (*.gif;*.jpg;*.jpeg;*.png;*.bmp;*.webp;*.svg)";
      * @param prompt {string} String for OK button (mac only, default is "Open" on mac, "Open" or "Select Folder" on win).
      *
-     * @return An object with these properties:
+     * @return {Object} An object with these properties:
      *      <ul><li>"data": An array of the full names of the selected files.</li>
      *          <li>"err": The status of the operation, one of
      *          <br>NO_ERROR
@@ -127,7 +127,7 @@ declare class FS {
      * @param prompt {string} String for Save button (mac only, default is "Save" on mac and win).
      * @param nameFieldLabel {string} String displayed in front of the file name text field (mac only, "File name:" on win).
      *
-     * @return An object with these properties:
+     * @return {Object} An object with these properties:
      *      <ul><li>"data": The file path selected to save at or "" if canceled</li>
      *          <li>"err": The status of the operation, one of
      *          <br>NO_ERROR
@@ -141,7 +141,7 @@ declare class FS {
      *
      * @param path {string} The path of the folder to read.
      *
-     * @return An object with these properties:
+     * @return {Object} An object with these properties:
      *      <ul><li>"data": An array of the names of the contained files (excluding '.' and '..'.</li>
      *          <li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
@@ -157,7 +157,7 @@ declare class FS {
      *
      * @param path {string} The path of the folder to create.
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_UNKNOWN
@@ -186,7 +186,7 @@ declare class FS {
      *
      * @param path {string} The path of the file or folder.
      *
-     * @return An object with these properties:
+     * @return {Object} An object with these properties:
      *      <ul><li>"data": An object with properties
      *          <br>isFile (boolean)
      *          <br>isDirectory (boolean)
@@ -207,7 +207,7 @@ declare class FS {
      * @param encoding {string}  The encoding of the contents of file, one of
      *      UTF8 (the default) or Base64.
      *
-     * @return An object with these properties:
+     * @return {Object} An object with these properties:
      *      <ul><li>"data": The file contents. </li>
      *          <li>"err": The status of the operation, one of
      *          <br>NO_ERROR
@@ -228,7 +228,7 @@ declare class FS {
      * @param encoding {string}  The encoding of the contents of file, one of
      *      UTF8 (the default) or Base64.
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_UNKNOWN
@@ -245,7 +245,7 @@ declare class FS {
      * @param path {string}  The path of the file or folder.
      * @param mode {number}  The permissions in numeric format (for example, 0777).
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_UNKNOWN
@@ -259,7 +259,7 @@ declare class FS {
      *
      * @param path {string}  The path of the file to delete.
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_UNKNOWN
@@ -282,7 +282,7 @@ declare class Process {
      * @param arguments {list} The arguments to create process. The first one is the full path of the executable,
      *                         followed by the arguments of the executable.
      *
-     * @return An object with these properties:
+     * @return {Object} An object with these properties:
      *      <ul><li>"data": The pid of the process, or -1 on error. </li>
      *          <li>"err": The status of the operation, one of
      *          <br>NO_ERROR
@@ -301,7 +301,7 @@ declare class Process {
      * @param pid {int} The pid of the process.
      * @param callback {function}  The handler function for the standard output callback.
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_UNKNOWN
@@ -316,7 +316,7 @@ declare class Process {
      * @param pid {int} The pid of the process.
      * @param callback {function}  The handler function for the standard error callback.
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_UNKNOWN
@@ -331,7 +331,7 @@ declare class Process {
      * @param pid {int}  The pid of the process
      * @param data {string} The data to write.
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_UNKNOWN
@@ -345,7 +345,7 @@ declare class Process {
      *
      * @param pid {int} The pid of the process.
      *
-     * @return An object with these properties:
+     * @return {Object} An object with these properties:
      *      <ul><li>"data": The path of the working directory. </li>
      *          <li>"err": The status of the operation, one of
      *          <br>NO_ERROR
@@ -360,7 +360,7 @@ declare class Process {
      *
      * @param pid {int} The pid of the process.
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_UNKNOWN
@@ -389,7 +389,7 @@ declare class Process {
      *
      * @param pid {int} The pid of the process.
      *
-     * @return An object with these properties:
+     * @return {Object} An object with these properties:
      *      <ul><li>"data": True if the process is running, false otherwise. </li>
      *          <li>"err": The status of the operation, one of
      *          <br>NO_ERROR
@@ -404,7 +404,7 @@ declare class Process {
      *
      * @param pid {int} The pid of the process
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_UNKNOWN
@@ -415,6 +415,7 @@ declare class Process {
 }
 
 declare interface EncodingConvertion {
+
     utf8_to_b64(str: string): string;
 
     b64_to_utf8(base64str: string): string;
@@ -439,7 +440,7 @@ declare class Encoding {
      */
     readonly Base64 = "Base64";
 
-    convertion: EncodingConvertion
+    convertion: EncodingConvertion;
 }
 
 declare class Util {
@@ -463,7 +464,7 @@ declare class Util {
      *  "file:///C:/log.txt"
      *  "mailto:test@adobe.com"
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_UNKNOWN
@@ -479,7 +480,7 @@ declare class Util {
      *
      * @param callback {function}  The handler function.
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of:
      *          <br>NO_ERROR
      *          <br>ERR_INVALID_PARAMS</li></ul>
@@ -492,7 +493,7 @@ declare class Util {
      * @param username {string}  proxy username
      * @param password {string}  proxy password
      *
-     * @return An object with this property:
+     * @return {Object} An object with this property:
      *      <ul><li>"err": The status of the operation, one of
      *          <br>NO_ERROR
      *          <br>ERR_INVALID_PARAMS </li>
