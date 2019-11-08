@@ -24,16 +24,15 @@ export default class CSInterface extends CSInterfaceV8 {
      *
      * @since 8.5.0
      *
-     * @return value >= 1.0f
-     * only available for windows machine
+     * @return {number} value >= 1.0f only available for windows machine
      */
     getMonitorScaleFactor(): number {
 
-        if (navigator.appVersion.toLowerCase().indexOf("windows") >= 0) {
-            return window.__adobe_cep__.getMonitorScaleFactor();
+        if (navigator.appVersion.toLowerCase().indexOf("windows") ===  -1) {
+            throw Error('OS not supported');
         }
 
-        return 0;
+        return window.__adobe_cep__.getMonitorScaleFactor();
     }
 
     /**
@@ -43,6 +42,8 @@ export default class CSInterface extends CSInterfaceV8 {
      *
      * @param urlName url at which binary file is located. Local files should start with 'file://'
      * @param callback Optional. A callback function that returns after binary is loaded
+     *
+     * @return {boolean}
      *
      * @example
      *
