@@ -998,7 +998,7 @@ export default class CSInterface {
      * @return {boolean} true if the extension window is visible; false if the extension window is hidden.
      */
     isWindowVisible(): boolean {
-        return window.__adobe_cep__.invokeSync("isWindowVisible", "");
+        return window.__adobe_cep__.invokeSync("isWindowVisible", "") === "true";
     }
 
     /**
