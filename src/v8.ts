@@ -1,7 +1,9 @@
 /**
  * Stores constants for the window types supported by the CSXS infrastructure.
  */
-export enum CSXSWindowType {
+import IMSInterface from "./IMSInterface";
+
+enum CSXSWindowType {
     _PANEL = "Panel",
     _MODELESS = "Modeless",
     _MODAL_DIALOG = "ModalDialog"
@@ -17,7 +19,7 @@ export const EvalScript_ErrMessage: string = 'EvalScript error.';
  * components. The major, minor and micro values are numeric; the special
  * value can be any string.
  */
-export class Version {
+class Version {
     /**
      * The maximum value allowed for a numeric version component.
      * This reflects the maximum value allowed in PlugPlug and the manifest schema.
@@ -40,7 +42,7 @@ export class Version {
  * Defines a boundary for a version range, which associates a Version object
  * with a flag for whether it is an inclusive or exclusive boundary.
  */
-export class VersionBound {
+class VersionBound {
     /**
      * @param version   The Version object.
      * @param inclusive True if this boundary is inclusive, false if it is exclusive.
@@ -54,7 +56,7 @@ export class VersionBound {
 /**
  * Defines a range of versions using a lower boundary and optional upper boundary.
  */
-export class VersionRange {
+class VersionRange {
     /**
      * @param lowerBound The VersionBound object.
      * @param upperBound The VersionBound object, or null for a range with no upper boundary.
@@ -70,7 +72,7 @@ export class VersionRange {
  * Extensions can declare dependencies on particular
  * CEP runtime versions in the extension manifest.
  */
-export class Runtime {
+class Runtime {
     /**
      * @FIXME: Documentation tell us "version" but the Javascript say "versionRange"
      */
@@ -98,7 +100,7 @@ export interface ExtensionDispatchInfo {
  * @FIXME: interface?
  * Encapsulates a CEP-based extension to an Adobe application.
  */
-export class Extension {
+class Extension {
     /**
      * @param id              The unique identifier of this extension.
      * @param name            The localizable display name of this extension.
@@ -133,7 +135,7 @@ type EventScope = "GLOBAL" | "APPLICATION";
 /**
  * A standard JavaScript event, the base class for CEP events.
  */
-export class CSEvent {
+class CSEvent {
     /**
      * Event-specific data.
      */
@@ -153,7 +155,7 @@ export class CSEvent {
  * @FIXME: Interface / enum ?
  * Stores operating-system-specific location constants for use in the CSInterface.getSystemPath() method.
  */
-export class SystemPath {
+class SystemPath {
     /**
      * The path to user data.
      */
@@ -183,7 +185,7 @@ export class SystemPath {
 /**
  * Stores color-type constants.
  */
-export enum ColorType {
+enum ColorType {
     /**
      * RGB color type.
      */
@@ -209,7 +211,7 @@ type RGBNumber = number;
  * All values are in the range [0.0 to 255.0]. Invalid numeric values are
  * converted to numbers within this range.
  */
-export class RGBColor {
+class RGBColor {
     /**
      * @param red   The red value, in the range [0.0 to 255.0].
      * @param green The green value, in the range [0.0 to 255.0].
@@ -230,7 +232,7 @@ export class RGBColor {
  * or the x component is 0 and the y component is positive or negative for
  * an up or down direction.
  */
-export class Direction {
+class Direction {
     /**
      * @param x     The horizontal component of the point.
      * @param y     The vertical component of the point.
@@ -249,7 +251,7 @@ type GradientOffset = number;
 /**
  * Stores gradient stop information.
  */
-export class GradientStop {
+class GradientStop {
     /**
      * @param offset   The offset of the gradient stop, in the range [0.0 to 1.0].
      * @param rgbColor The color of the gradient at this point, an RGBColor object.
@@ -263,7 +265,7 @@ export class GradientStop {
 /**
  * Stores gradient color information.
  */
-export class GradientColor {
+class GradientColor {
     /**
      * @FIXME: Documentation tell us "gradientStopList" but the Javascript say "arrGradientStop"
      */
@@ -288,7 +290,7 @@ export class GradientColor {
  *
  * @FIXME: use Conditional Type for the constructor
  */
-export class UIColor {
+class UIColor {
     /**
      * @param type              The color type, 1 for "rgb" and 2 for "gradient". The supplied color object must correspond to this type.
      * @param antialiasLevel    The anti-alias level constant.
@@ -304,7 +306,7 @@ export class UIColor {
 /**
  * Stores window-skin properties, such as color and font. All color parameter values are UIColor objects except that systemHighlightColor is RGBColor object.
  */
-export interface AppSkinInfo {
+interface AppSkinInfo {
     /**
      * The base font family of the application.
      */
@@ -338,7 +340,7 @@ export interface AppSkinInfo {
 /**
  * Stores information about the environment in which the extension is loaded.
  */
-export interface HostEnvironment {
+interface HostEnvironment {
     /**
      * The application's name.
      */
@@ -372,7 +374,7 @@ export interface HostEnvironment {
 /**
  * Stores information about the host capabilities.
  */
-export interface HostCapabilities {
+interface HostCapabilities {
     /**
      * EXTENDED_PANEL_MENU True if the application supports panel menu.
      */
@@ -400,7 +402,7 @@ export interface HostCapabilities {
  *
  * @since 4.2.0
  */
-export interface ApiVersion {
+interface ApiVersion {
     /**
      * The major version
      */
@@ -420,7 +422,7 @@ export interface ApiVersion {
  *
  * @since 5.2.0
  */
-export class MenuItemStatus {
+class MenuItemStatus {
     /**
      * @param menuItemLabel  The menu item label.
      * @param enabled         True if user wants to enable the menu item.
@@ -437,7 +439,7 @@ export class MenuItemStatus {
  *
  * @since 5.2.0
  */
-export class ContextMenuItemStatus {
+class ContextMenuItemStatus {
     /**
      * @param menuItemID     The menu item id.
      * @param enabled         True if user wants to enable the menu item.
@@ -460,7 +462,7 @@ export class ContextMenuItemStatus {
  * </ul>
  *
  */
-export default class CSInterface {
+class CSInterface {
 
     static readonly THEME_COLOR_CHANGED_EVENT: string = "com.adobe.csxs.events.ThemeColorChanged";
     /**
@@ -863,6 +865,7 @@ export default class CSInterface {
         }
 
         const itemStatus = new MenuItemStatus(menuItemLabel, enabled, checked);
+        // @ts-ignore @FIXME: test return result
         return window.__adobe_cep__.invokeSync("updatePanelMenuItem", JSON.stringify(itemStatus));
     }
 
@@ -1110,3 +1113,7 @@ export default class CSInterface {
         return window.__adobe_cep__.invokeSync("getWindowTitle", "");
     }
 }
+
+
+export { CSXSWindowType, Extension, CSInterface, RGBColor, UIColor, ColorType, Direction, GradientStop, GradientColor, CSEvent, ContextMenuItemStatus, MenuItemStatus, SystemPath, ApiVersion, HostCapabilities, HostEnvironment, AppSkinInfo };
+export default CSInterface;

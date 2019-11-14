@@ -13,12 +13,10 @@
 
 import CSInterfaceV8 from "./v8";
 
-export * from './v8'
-
 /**
  * CSInterface - v9.4.0
  */
-export default class CSInterface extends CSInterfaceV8 {
+class CSInterface extends CSInterfaceV8 {
     /**
      * Retrieves the scale factor of Monitor.
      *
@@ -125,3 +123,6 @@ export default class CSInterface extends CSInterfaceV8 {
         return false;
     }
 }
+
+export * from './v8'
+export default CSInterface;

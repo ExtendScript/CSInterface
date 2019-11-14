@@ -1,5 +1,4 @@
-
-export class IMSInterface {
+class IMSInterface {
     /**
      * Establishes an IMS session. Must be called before any IMS access methods.
      * This method is not thread safe.
@@ -146,7 +145,7 @@ export class IMSInterface {
     }
 }
 
-export namespace IMSInterface {
+namespace IMSInterface {
     export enum Events {
         imsFetchAccessTokenWithStatus = "com.adobe.csxs.events.internal.ims.FetchAccessTokenWithStatus",
         imsFetchAccessToken = "com.adobe.csxs.events.internal.ims.FetchAccessToken",
@@ -220,3 +219,6 @@ export namespace IMSInterface {
         IMS_UNKNOWN_ERROR = "0xFFFF"
     }
 }
+
+export { IMSInterface };
+export default IMSInterface;
