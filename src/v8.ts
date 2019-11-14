@@ -1,8 +1,6 @@
 /**
  * Stores constants for the window types supported by the CSXS infrastructure.
  */
-import IMSInterface from "./IMSInterface";
-
 enum CSXSWindowType {
     _PANEL = "Panel",
     _MODELESS = "Modeless",
