@@ -8,11 +8,6 @@ enum CSXSWindowType {
 }
 
 /**
- * EvalScript error message
- */
-export const EvalScript_ErrMessage: string = 'EvalScript error.';
-
-/**
  * Defines a version number with major, minor, micro, and special
  * components. The major, minor and micro values are numeric; the special
  * value can be any string.
@@ -90,7 +85,7 @@ class Runtime {
 /**
  * @FIXME: ExtensionManifest_v_7_0.xsd#205
  */
-export interface ExtensionDispatchInfo {
+interface ExtensionDispatchInfo {
 
 }
 
@@ -126,11 +121,6 @@ class Extension {
 }
 
 /**
- *
- */
-type EventScope = "GLOBAL" | "APPLICATION";
-
-/**
  * A standard JavaScript event, the base class for CEP events.
  */
 class CSEvent {
@@ -145,39 +135,8 @@ class CSEvent {
      * @param appId         The unique identifier of the application that generated the event.
      * @param extensionId   The unique identifier of the extension that generated the event.
      */
-    constructor(public type: string, public scope: EventScope, public appId: string, public extensionId: string) {
+    constructor(public type: string, public scope: CSInterface.EventScope, public appId: string, public extensionId: string) {
     }
-}
-
-/**
- * @FIXME: Interface / enum ?
- * Stores operating-system-specific location constants for use in the CSInterface.getSystemPath() method.
- */
-class SystemPath {
-    /**
-     * The path to user data.
-     */
-    static readonly USER_DATA: string = "userData";
-    /**
-     * The path to common files for Adobe applications.
-     */
-    static readonly COMMON_FILES: string = "commonFiles";
-    /**
-     * The path to the user's default document folder.
-     */
-    static readonly MY_DOCUMENTS: string = "myDocuments";
-    /**
-     * @deprecated. Use SystemPath.Extension.
-     */
-    static readonly APPLICATION: string = "application";
-    /**
-     * The path to current extension.
-     */
-    static readonly EXTENSION: string = "extension";
-    /**
-     * The path to hosting application's executable.
-     */
-    static readonly HOST_APPLICATION: string = "hostApplication";
 }
 
 /**
@@ -460,9 +419,8 @@ class ContextMenuItemStatus {
  * </ul>
  *
  */
-class CSInterface {
+export class CSInterface {
 
-    static readonly THEME_COLOR_CHANGED_EVENT: string = "com.adobe.csxs.events.ThemeColorChanged";
     /**
      * The host environment data object.
      */
@@ -491,7 +449,7 @@ class CSInterface {
      *
      * @return {string} The platform-specific system path string.
      */
-    getSystemPath(pathType: SystemPath): string {
+    getSystemPath(pathType: CSInterface.SystemPath): string {
 
         let path = decodeURI(window.__adobe_cep__.getSystemPath(pathType));
         const OSVersion = this.getOSInformation();
@@ -1112,6 +1070,50 @@ class CSInterface {
     }
 }
 
+export namespace CSInterface {
+    /**
+     * Stores operating-system-specific location constants for use in the CSInterface.getSystemPath() method.
+     */
+    export enum SystemPath {
+        /**
+         * The path to user data.
+         */
+        USER_DATA = "userData",
+        /**
+         * The path to common files for Adobe applications.
+         */
+        COMMON_FILES = "commonFiles",
+        /**
+         * The path to the user's default document folder.
+         */
+        MY_DOCUMENTS = "myDocuments",
+        /**
+         * @deprecated. Use SystemPath.Extension.
+         */
+        APPLICATION = "application",
+        /**
+         * The path to current extension.
+         */
+        EXTENSION = "extension",
+        /**
+         * The path to hosting application's executable.
+         */
+        HOST_APPLICATION = "hostApplication"
+    }
 
-export { CSXSWindowType, Extension, CSInterface, RGBColor, UIColor, ColorType, Direction, GradientStop, GradientColor, CSEvent, ContextMenuItemStatus, MenuItemStatus, SystemPath, ApiVersion, HostCapabilities, HostEnvironment, AppSkinInfo };
+    /**
+     *
+     */
+    export const EvalScript_ErrMessage: string = 'EvalScript error.';
+    /**
+     *
+     */
+    export type EventScope = "GLOBAL" | "APPLICATION";
+    /**
+     *
+     */
+    export const THEME_COLOR_CHANGED_EVENT: string = "com.adobe.csxs.events.ThemeColorChanged";
+}
+
+export { CSXSWindowType, ExtensionDispatchInfo, Extension, RGBColor, UIColor, ColorType, Direction, GradientStop, GradientColor, CSEvent, ContextMenuItemStatus, MenuItemStatus, ApiVersion, HostCapabilities, HostEnvironment, AppSkinInfo };
 export default CSInterface;

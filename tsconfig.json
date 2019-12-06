@@ -2,9 +2,17 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "./lib",
+    "outDir": "lib",
     "removeComments": false,
+    "preserveConstEnums": true,
+    "types": ["./CEPEngine_extensions", "./window", "@types/node"],
     "strict": true,
-    "declaration": true
-  }
+    "sourceMap": false,
+    "declaration": true,
+    "alwaysStrict": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": ["node_modules"]
 }

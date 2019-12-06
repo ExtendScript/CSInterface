@@ -1,5 +1,5 @@
 import {Encoding, FS, Process, Util} from "./CEPEngine_extensions";
-import {CSEvent, SystemPath} from "./src"
+import {CSEvent, CSInterface} from "./src"
 
 declare global {
 
@@ -43,7 +43,7 @@ declare global {
         getMonitorScaleFactor(): number
         getNetworkPreferences(): string
         getScaleFactor(): number
-        getSystemPath(pathType: SystemPath): string
+        getSystemPath(pathType: CSInterface.SystemPath): string
         initResourceBundle(): string
 
         invokeAsync(type: string, params: string, callback: Function, obj?: object): Function

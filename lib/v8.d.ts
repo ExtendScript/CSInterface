@@ -1,22 +1,17 @@
-/// <reference path="../window.d.ts" />
 /**
  * Stores constants for the window types supported by the CSXS infrastructure.
  */
-export declare enum CSXSWindowType {
+declare enum CSXSWindowType {
     _PANEL = "Panel",
     _MODELESS = "Modeless",
     _MODAL_DIALOG = "ModalDialog"
 }
 /**
- * EvalScript error message
- */
-export declare const EvalScript_ErrMessage: string;
-/**
  * Defines a version number with major, minor, micro, and special
  * components. The major, minor and micro values are numeric; the special
  * value can be any string.
  */
-export declare class Version {
+declare class Version {
     major: number;
     minor: number;
     micro: number;
@@ -40,7 +35,7 @@ export declare class Version {
  * Defines a boundary for a version range, which associates a Version object
  * with a flag for whether it is an inclusive or exclusive boundary.
  */
-export declare class VersionBound {
+declare class VersionBound {
     version: Version;
     inclusive: boolean;
     /**
@@ -54,7 +49,7 @@ export declare class VersionBound {
 /**
  * Defines a range of versions using a lower boundary and optional upper boundary.
  */
-export declare class VersionRange {
+declare class VersionRange {
     lowerBound: VersionBound;
     upperBound?: VersionBound | undefined;
     /**
@@ -70,7 +65,7 @@ export declare class VersionRange {
  * Extensions can declare dependencies on particular
  * CEP runtime versions in the extension manifest.
  */
-export declare class Runtime {
+declare class Runtime {
     name: string;
     versionRange: VersionRange;
     /**
@@ -88,13 +83,13 @@ export declare class Runtime {
 /**
  * @FIXME: ExtensionManifest_v_7_0.xsd#205
  */
-export interface ExtensionDispatchInfo {
+interface ExtensionDispatchInfo {
 }
 /**
  * @FIXME: interface?
  * Encapsulates a CEP-based extension to an Adobe application.
  */
-export declare class Extension {
+declare class Extension {
     id: any;
     name: string;
     mainPath: string;
@@ -133,15 +128,11 @@ export declare class Extension {
     constructor(id: any, name: string, mainPath: string, basePath: string, windowType: CSXSWindowType, width: number, height: number, minWidth: number, minHeight: number, maxWidth: number, maxHeight: number, defaultExtensionDataXml: ExtensionDispatchInfo, specialExtensionDataXml: ExtensionDispatchInfo, requiredRuntimeList: Runtime[], isAutoVisible: boolean, isPluginExtension: boolean);
 }
 /**
- *
- */
-declare type EventScope = "GLOBAL" | "APPLICATION";
-/**
  * A standard JavaScript event, the base class for CEP events.
  */
-export declare class CSEvent {
+declare class CSEvent {
     type: string;
-    scope: EventScope;
+    scope: CSInterface.EventScope;
     appId: string;
     extensionId: string;
     /**
@@ -154,42 +145,12 @@ export declare class CSEvent {
      * @param appId         The unique identifier of the application that generated the event.
      * @param extensionId   The unique identifier of the extension that generated the event.
      */
-    constructor(type: string, scope: EventScope, appId: string, extensionId: string);
-}
-/**
- * @FIXME: Interface / enum ?
- * Stores operating-system-specific location constants for use in the CSInterface.getSystemPath() method.
- */
-export declare class SystemPath {
-    /**
-     * The path to user data.
-     */
-    static readonly USER_DATA: string;
-    /**
-     * The path to common files for Adobe applications.
-     */
-    static readonly COMMON_FILES: string;
-    /**
-     * The path to the user's default document folder.
-     */
-    static readonly MY_DOCUMENTS: string;
-    /**
-     * @deprecated. Use SystemPath.Extension.
-     */
-    static readonly APPLICATION: string;
-    /**
-     * The path to current extension.
-     */
-    static readonly EXTENSION: string;
-    /**
-     * The path to hosting application's executable.
-     */
-    static readonly HOST_APPLICATION: string;
+    constructor(type: string, scope: CSInterface.EventScope, appId: string, extensionId: string);
 }
 /**
  * Stores color-type constants.
  */
-export declare enum ColorType {
+declare enum ColorType {
     /**
      * RGB color type.
      */
@@ -212,7 +173,7 @@ declare type RGBNumber = number;
  * All values are in the range [0.0 to 255.0]. Invalid numeric values are
  * converted to numbers within this range.
  */
-export declare class RGBColor {
+declare class RGBColor {
     red: RGBNumber;
     green: RGBNumber;
     blue: RGBNumber;
@@ -234,7 +195,7 @@ export declare class RGBColor {
  * or the x component is 0 and the y component is positive or negative for
  * an up or down direction.
  */
-export declare class Direction {
+declare class Direction {
     x: number;
     y: number;
     /**
@@ -252,7 +213,7 @@ declare type GradientOffset = number;
 /**
  * Stores gradient stop information.
  */
-export declare class GradientStop {
+declare class GradientStop {
     offset: GradientOffset;
     rgbColor: RGBColor;
     /**
@@ -266,7 +227,7 @@ export declare class GradientStop {
 /**
  * Stores gradient color information.
  */
-export declare class GradientColor {
+declare class GradientColor {
     type: "linear";
     direction: Direction;
     numStops: number;
@@ -291,7 +252,7 @@ export declare class GradientColor {
  *
  * @FIXME: use Conditional Type for the constructor
  */
-export declare class UIColor {
+declare class UIColor {
     type: 1 | 2;
     antialiasLevel: any;
     color: RGBColor | GradientColor;
@@ -307,7 +268,7 @@ export declare class UIColor {
 /**
  * Stores window-skin properties, such as color and font. All color parameter values are UIColor objects except that systemHighlightColor is RGBColor object.
  */
-export interface AppSkinInfo {
+interface AppSkinInfo {
     /**
      * The base font family of the application.
      */
@@ -340,7 +301,7 @@ export interface AppSkinInfo {
 /**
  * Stores information about the environment in which the extension is loaded.
  */
-export interface HostEnvironment {
+interface HostEnvironment {
     /**
      * The application's name.
      */
@@ -373,7 +334,7 @@ export interface HostEnvironment {
 /**
  * Stores information about the host capabilities.
  */
-export interface HostCapabilities {
+interface HostCapabilities {
     /**
      * EXTENDED_PANEL_MENU True if the application supports panel menu.
      */
@@ -400,7 +361,7 @@ export interface HostCapabilities {
  *
  * @since 4.2.0
  */
-export interface ApiVersion {
+interface ApiVersion {
     /**
      * The major version
      */
@@ -419,7 +380,7 @@ export interface ApiVersion {
  *
  * @since 5.2.0
  */
-export declare class MenuItemStatus {
+declare class MenuItemStatus {
     menuItemLabel: string;
     enabled: boolean;
     checked: boolean;
@@ -437,7 +398,7 @@ export declare class MenuItemStatus {
  *
  * @since 5.2.0
  */
-export declare class ContextMenuItemStatus {
+declare class ContextMenuItemStatus {
     menuItemID: string;
     enabled: boolean;
     checked: boolean;
@@ -460,8 +421,7 @@ export declare class ContextMenuItemStatus {
  * </ul>
  *
  */
-export default class CSInterface {
-    static readonly THEME_COLOR_CHANGED_EVENT: string;
+export declare class CSInterface {
     /**
      * The host environment data object.
      */
@@ -483,7 +443,7 @@ export default class CSInterface {
      *
      * @return {string} The platform-specific system path string.
      */
-    getSystemPath(pathType: SystemPath): string;
+    getSystemPath(pathType: CSInterface.SystemPath): string;
     /**
      * Evaluates a JavaScript script, which can use the JavaScript DOM
      * of the host application.
@@ -492,7 +452,7 @@ export default class CSInterface {
      * @param callback  Optional. A callback function that receives the result of execution.
      *          If execution fails, the callback function receives the error message EvalScript_ErrMessage.
      */
-    evalScript(script: string, callback: (result?: any) => void | null): void;
+    evalScript(script: string, callback?: (result?: any) => void | null): void;
     /**
      * Retrieves the unique identifier of the application.
      * in which the extension is currently running.
@@ -909,8 +869,52 @@ export default class CSInterface {
      *
      * @since 6.1.0
      *
-     * @return The window title.
+     * @return {string} The window title.
      */
     getWindowTitle(): string;
 }
-export {};
+export declare namespace CSInterface {
+    /**
+     * Stores operating-system-specific location constants for use in the CSInterface.getSystemPath() method.
+     */
+    enum SystemPath {
+        /**
+         * The path to user data.
+         */
+        USER_DATA = "userData",
+        /**
+         * The path to common files for Adobe applications.
+         */
+        COMMON_FILES = "commonFiles",
+        /**
+         * The path to the user's default document folder.
+         */
+        MY_DOCUMENTS = "myDocuments",
+        /**
+         * @deprecated. Use SystemPath.Extension.
+         */
+        APPLICATION = "application",
+        /**
+         * The path to current extension.
+         */
+        EXTENSION = "extension",
+        /**
+         * The path to hosting application's executable.
+         */
+        HOST_APPLICATION = "hostApplication"
+    }
+    /**
+     *
+     */
+    const EvalScript_ErrMessage: string;
+    /**
+     *
+     */
+    type EventScope = "GLOBAL" | "APPLICATION";
+    /**
+     *
+     */
+    const THEME_COLOR_CHANGED_EVENT: string;
+}
+export { CSXSWindowType, ExtensionDispatchInfo, Extension, RGBColor, UIColor, ColorType, Direction, GradientStop, GradientColor, CSEvent, ContextMenuItemStatus, MenuItemStatus, ApiVersion, HostCapabilities, HostEnvironment, AppSkinInfo };
+export default CSInterface;
