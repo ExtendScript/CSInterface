@@ -138,7 +138,7 @@ declare class CSEvent {
     /**
      * Event-specific data.
      */
-    data: string;
+    data?: any;
     /**
      * @param type          The name of the event type.
      * @param scope         The scope of event, can be "GLOBAL" or "APPLICATION".

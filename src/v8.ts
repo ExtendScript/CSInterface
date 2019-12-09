@@ -127,7 +127,7 @@ class CSEvent {
     /**
      * Event-specific data.
      */
-    public data: string = "";
+    public data?: any = "";
 
     /**
      * @param type          The name of the event type.
