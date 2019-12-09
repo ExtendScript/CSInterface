@@ -523,7 +523,7 @@ export class CSInterface {
      * @param listener The JavaScript handler function or method.
      * @param obj      Optional, the object containing the handler method, if any. Default is null.
      */
-    addEventListener(type: string, listener: any, obj?: object): void {
+    addEventListener(type: string, listener: (evt: CSEvent) => void, obj?: object): void {
         window.__adobe_cep__.addEventListener(type, listener, obj);
     }
 
