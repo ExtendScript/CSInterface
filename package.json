@@ -1,6 +1,6 @@
 {
   "name": "csinterface",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "TypeScript version of Adobe CSInterface",
   "main": "src/index.js",
   "types" : "lib/index.d.ts",
