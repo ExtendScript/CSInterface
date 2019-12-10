@@ -2,7 +2,7 @@
   "name": "csinterface",
   "version": "0.1.7",
   "description": "TypeScript version of Adobe CSInterface",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "types" : "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
