@@ -16,7 +16,7 @@ class CSInterface extends CSInterfaceBase {
      *
      * @return {Promise<*>}
      */
-    evalScript(script: string, ...args: any): Promise<any>;
+    evalScript(script: string, ...args: unknown[]): Promise<any>;
     evalScript(script: string, callback?: (result?: any) => void): Promise<any> {
         /**
          * @param {*} value
