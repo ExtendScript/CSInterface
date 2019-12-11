@@ -6,7 +6,7 @@ declare class CSInterface extends CSInterfaceBase {
      *
      * @return {Promise<*>}
      */
-    evalScript(script: string, ...args: any): Promise<any>;
+    evalScript(script: string, ...args: unknown[]): Promise<any>;
 }
 export { CSInterface };
 export default CSInterface;
