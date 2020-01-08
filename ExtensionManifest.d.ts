@@ -1,4 +1,4 @@
-declare namespace CEP {
+declare namespace ExtensionManifest {
 
     type CollectionWithAttributes<K extends string, T, A> =
         Partial<A> extends A
@@ -153,7 +153,7 @@ declare namespace CEP {
         /**
          * Contains a list for every extension's attributes.
          */
-        DispatchInfoList: Collection<"Extension", null, CEP.DispatchInfoList.Extension>;
+        DispatchInfoList: Collection<"Extension", null, DispatchInfoList.Extension>;
     }
 
     /**
@@ -371,7 +371,7 @@ declare namespace CEP {
             /**
              * Specifies the type of the extension. Note that the "Custom" type means that it is up to the point product to decide how this extension will be handled. This value is localizable.
              */
-            Type?: CEP.DispatchInfoList.UI.Type;
+            Type?: DispatchInfoList.UI.Type;
             /**
              * Specifies the name for the menu entry. This value is localizable.
              */
@@ -434,32 +434,34 @@ declare namespace CEP {
             DependencyList?: Collection<"Dependency", null, Dependency>;
         }
     }
+
+
+    interface ManifestAttr {
+        /**
+         * The version of this ExtensionManifest.
+         */
+        Version: "7.0"
+        /**
+         * The Id for all extensions included in this ExtensionManifest.
+         */
+        ExtensionBundleId: ExtensionManifest.ID
+        /**
+         * The version of this ExtensionBundle.
+         */
+        ExtensionBundleVersion: ExtensionManifest.Version
+        /**
+         * An optional user-friendly name for this ExtensionBundle.
+         */
+        ExtensionBundleName?: ExtensionManifest.RequiredString
+    }
 }
 
-interface ManifestAttr {
-    /**
-     * The version of this ExtensionManifest.
-     */
-    Version: "7.0"
-    /**
-     * The Id for all extensions included in this ExtensionManifest.
-     */
-    ExtensionBundleId: CEP.ID
-    /**
-     * The version of this ExtensionBundle.
-     */
-    ExtensionBundleVersion: CEP.Version
-    /**
-     * An optional user-friendly name for this ExtensionBundle.
-     */
-    ExtensionBundleName?: CEP.RequiredString
+
+interface V6 extends ExtensionManifest.ExtensionManifest {
 }
 
-export interface V6 extends CEP.ExtensionManifest {
+interface V7 extends ExtensionManifest.ExtensionManifest {
 }
 
-export interface V7 extends CEP.ExtensionManifest {
-}
-
-export { CEP as Manifest}
-export default CEP;
+export { V6, V7}
+export default ExtensionManifest;
