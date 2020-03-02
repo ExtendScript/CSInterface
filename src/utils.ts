@@ -16,6 +16,7 @@ class CSInterface extends CSInterfaceBase {
      *
      * @return {Promise<*>}
      */
+    // TODO: Generic function evalScript<T extends (...args: any[]) => any>(script: string, ...args: Parameters<T>): void
     evalScript(script: string, ...args: unknown[]): Promise<any>;
     evalScript(script: string, callback?: (result?: any) => void): Promise<any> {
         /**
@@ -27,7 +28,12 @@ class CSInterface extends CSInterfaceBase {
                 case 'undefined':
                     return '"null"';
                 case 'string':
-                    return JSON.stringify(value);
+                    let str = JSON.stringify(value);
+                    if (str.substr(0,1) !== '"' || str.substr(-1) !== '"') {
+                        throw TypeError(`Unbekannter JSON String: "${str}"`);
+                    }
+
+                    return `"\\${str.substr(0, str.length -1)}\\""`;
                 case 'number': {
 
                     if (Number.isNaN(value) || Infinity === value) {
@@ -47,7 +53,7 @@ class CSInterface extends CSInterfaceBase {
                     return value;
                 }
                 default:
-                    throw Error(`Nicht unterstützter Typ "${typeof value}"`);
+                    throw TypeError(`Nicht unterstützter Typ "${typeof value}"`);
             }
         }
 
@@ -90,6 +96,7 @@ class CSInterface extends CSInterfaceBase {
                     '{"error": "' + e.name + '", "message": "' + e.message.replace(/"/g, \"'\") + '", "line": "' + (e.line ? e.line - 1: -1) + '", "stack": "' + (e.stack ? e.stack.replace(/"/g, \"'\") : \"\") + '"}'
                 }`;
 
+            console.debug(script);
             super.evalScript(script, (result: any) => {
 
                 // Wenn der Nutzer eine eigene Callback angegeben hat (evalScript legacy support)
