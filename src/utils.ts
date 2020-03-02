@@ -95,8 +95,6 @@ class CSInterface extends CSInterfaceBase {
                 } catch(e) {
                     '{"error": "' + e.name + '", "message": "' + e.message.replace(/"/g, \"'\") + '", "line": "' + (e.line ? e.line - 1: -1) + '", "stack": "' + (e.stack ? e.stack.replace(/"/g, \"'\") : \"\") + '"}'
                 }`;
-
-            console.debug(script);
             super.evalScript(script, (result: any) => {
 
                 // Wenn der Nutzer eine eigene Callback angegeben hat (evalScript legacy support)
