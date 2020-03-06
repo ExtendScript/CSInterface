@@ -473,7 +473,7 @@ export declare class CSInterface {
      *
      * @param event A CSEvent object.
      */
-    dispatchEvent(event: CSEvent): void;
+    dispatchEvent<T extends CSEvent>(event: T): void;
     /**
      * Registers an interest in a CEP event of a particular type, and
      * assigns an event handler.
@@ -484,7 +484,7 @@ export declare class CSInterface {
      * @param listener The JavaScript handler function or method.
      * @param obj      Optional, the object containing the handler method, if any. Default is null.
      */
-    addEventListener(type: string, listener: (evt: CSEvent) => void, obj?: object): void;
+    addEventListener<T extends CSEvent>(type: string, listener: (evt: T) => void, obj?: object): void;
     /**
      * Removes a registered event listener.
      *

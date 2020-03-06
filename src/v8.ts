@@ -505,7 +505,7 @@ export class CSInterface {
      *
      * @param event A CSEvent object.
      */
-    dispatchEvent(event: CSEvent): void {
+    dispatchEvent<T extends CSEvent>(event: T): void {
         if (typeof event.data == "object") {
             event.data = JSON.stringify(event.data);
         }
@@ -523,7 +523,7 @@ export class CSInterface {
      * @param listener The JavaScript handler function or method.
      * @param obj      Optional, the object containing the handler method, if any. Default is null.
      */
-    addEventListener(type: string, listener: (evt: CSEvent) => void, obj?: object): void {
+    addEventListener<T extends CSEvent>(type: string, listener: (evt: T) => void, obj?: object): void {
         window.__adobe_cep__.addEventListener(type, listener, obj);
     }
 
