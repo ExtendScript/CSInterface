@@ -28,12 +28,7 @@ class CSInterface extends CSInterfaceBase {
                 case 'undefined':
                     return '"null"';
                 case 'string':
-                    let str = JSON.stringify(value);
-                    if (str.substr(0,1) !== '"' || str.substr(-1) !== '"') {
-                        throw TypeError(`Unbekannter JSON String: "${str}"`);
-                    }
-
-                    return `"\\${str.substr(0, str.length -1)}\\""`;
+                    return JSON.stringify(value);
                 case 'number': {
 
                     if (Number.isNaN(value) || Infinity === value) {
@@ -95,6 +90,7 @@ class CSInterface extends CSInterfaceBase {
                 } catch(e) {
                     '{"error": "' + e.name + '", "message": "' + e.message.replace(/"/g, \"'\") + '", "line": "' + (e.line ? e.line - 1: -1) + '", "stack": "' + (e.stack ? e.stack.replace(/"/g, \"'\") : \"\") + '"}'
                 }`;
+
             super.evalScript(script, (result: any) => {
 
                 // Wenn der Nutzer eine eigene Callback angegeben hat (evalScript legacy support)
