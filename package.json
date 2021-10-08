@@ -3,13 +3,13 @@
   "version": "0.1.9",
   "description": "TypeScript version of Adobe CSInterface",
   "main": "lib/index.js",
-  "types" : "lib/index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ExtendScript/CSInterface.git"
+    "url": "https://github.com/ExtendScript/CSInterface.git"
   },
   "keywords": [
     "CSInterface",
@@ -18,7 +18,7 @@
     "ExtendScript",
     "TypeScript"
   ],
-  "author": "Manuel Pogge",
+  "author": "Fabian Morón Zirfas, Manuel Pogge",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ExtendScript/CSInterface/issues"

@@ -21,6 +21,6 @@ export const HostApplication: Partial<HostNameMap> = {
     RUSH: "Rush"
 };
 
-export * from './v9';
+export * from './v11';
 export {CSInterface as CSInterfacePromise} from "./utils";
-export {default} from './v9'
+export {default} from './v11'
