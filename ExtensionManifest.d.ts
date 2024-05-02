@@ -225,10 +225,35 @@ declare namespace ExtensionManifest {
 
     export namespace DispatchInfoList {
 
+        export type FeatureParameterValue = "SameSiteByDefaultCookies" | "CookiesWithoutSameSiteMustBeSecure" | "NetworkService";
+
         /**
          * One CEF command line parameter
          */
-        export type Parameter = string;
+        export type Parameter =
+            "--enable-media-stream" |                   // Enable media (WebRTC audio/video) streaming.
+            "--enable-speech-input" |                   // Enable speech input (x-webkit-speech).
+            "--persist-session-cookies" |               // Persist session cookies.
+            "--disable-image-loading" |                 // Disable loading of images from the network. A cached image will still be rendered if requested.
+            "--disable-javascript-open-windows" |       // Disable opening of windows via JavaScript.
+            "--disable-javascript-close-windows" |      // Disable closing of windows via JavaScript.
+            "--disable-javascript-access-clipboard" |   // Disable clipboard access via JavaScript.
+            "--enable-caret-browsing" |                 // Enable caret browsing.
+            "--proxy-auto-detect" |                     // This tells Chrome to try and automatically detect your proxy configuration.
+                                                        // See more info at http://www.chromium.org/developers/design-documents/network-settings.
+            "--user-agent" |                            // A string used to override the default user agent with a custom one.
+            "--disable-application-cache" |             // Disable the ApplicationCache.
+            "--enable-nodejs" |                         // Enable Node.js APIs in extensions. Supported since CEP 6.1.
+            "--disable-pinch" |                         // Disable compositor-accelerated touch-screen pinch gestures.
+            "--mixed-context" |                         // Enable the "mixed context" mode. Supported since CEP 7.0.
+
+            "--allow-file-access" |
+            "--allow-file-access-from-files" |
+            // @see https://github.com/Adobe-CEP/CEP-Resources/blob/master/CEP_11.x/Documentation/CEP%2011.1%20HTML%20Extension%20Cookbook.md#migration-from-cep-10-to-cep-11
+            "--disable-features" |
+            "--disable-site-isolation-trials"
+            ;
+
         /**
          * Contains a list of CEF command line parameters.
          */
