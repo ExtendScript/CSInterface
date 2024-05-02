@@ -410,7 +410,7 @@ declare namespace ExtensionManifest {
              *
              *  minOccurs="0" maxOccurs="5"
              */
-            Icons?: UI.Icon[];
+            Icons?: { [iconType in UI.IconTyp]: RelativePathLoc };
         }
 
         /**
