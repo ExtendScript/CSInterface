@@ -1,5 +1,5 @@
 {
-  "name": "csinterface",
+  "name": "@extendscript/csinterface",
   "version": "0.2.0",
   "description": "TypeScript version of Adobe CSInterface",
   "main": "lib/index.js",
