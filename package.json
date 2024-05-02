@@ -1,10 +1,11 @@
 {
   "name": "csinterface",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "TypeScript version of Adobe CSInterface",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,6 +14,7 @@
   },
   "keywords": [
     "CSInterface",
+    "IMSInterface",
     "CEP",
     "Adobe",
     "ExtendScript",
@@ -24,9 +26,12 @@
     "url": "https://github.com/ExtendScript/CSInterface/issues"
   },
   "homepage": "https://github.com/ExtendScript/CSInterface#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
-    "@types/node": "^8.6.0",
-    "typescript": "^3.6.0"
+    "@types/node": "^16.18.96",
+    "typescript": "^5.4.5"
   },
   "files": [
     "lib/**/*"
