@@ -1,6 +1,6 @@
 {
   "name": "@extendscript/csinterface",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript version of Adobe CSInterface",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
