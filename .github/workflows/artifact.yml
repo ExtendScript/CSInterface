@@ -23,7 +23,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist/
   check:
     name: check build
     needs: [build]
@@ -47,4 +46,3 @@ jobs:
           echo We are `pwd`
           ls -la ./
           ls -la ./dist
-          ls -la ./lib
