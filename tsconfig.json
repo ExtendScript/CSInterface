@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "outDir": "lib",
+    "outDir": "dist",
     "removeComments": false,
     "preserveConstEnums": true,
     "types": ["./CEPEngine_extensions", "./window", "@types/node"],
