@@ -2,8 +2,8 @@
   "name": "@extendscript/csinterface",
   "version": "1.0.0",
   "description": "TypeScript version of Adobe CSInterface",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 0"
@@ -41,6 +41,6 @@
     "typescript": "^5.4.5"
   },
   "files": [
-    "lib/**/*"
+    "dist/**/*"
   ]
 }
