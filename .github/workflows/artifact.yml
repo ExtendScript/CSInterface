@@ -44,4 +44,5 @@ jobs:
       - name: List files
         shell: bash
         run: |
-          ls -la /
+          echo We are `pwd`
+          ls -la ./
