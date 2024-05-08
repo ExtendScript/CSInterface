@@ -24,8 +24,13 @@ jobs:
         run: npm ci
       - name: Build 🔧
         run: npm run build --if-present
-      - name: Test
+      - name: Test 🧪
         run: npm run test  --if-present
+      - name: Archive production artifacts 🚀
+        uses: actions/upload-artifact@v4
+        with:
+          name: lib
+          path: lib
   release:
     name: semantic-release
     needs: [build]
@@ -39,6 +44,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: lib
       - name: Publish package 📦
         run: |
           npm ci
