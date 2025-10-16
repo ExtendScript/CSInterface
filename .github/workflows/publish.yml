@@ -2,9 +2,12 @@ name: Node.js CI
 permissions:
   contents: write
   packages: write
+  id-token: write
 on:
   push:
     branches: [master]
+    tags:
+      - "v*"
   pull_request:
     branches: [master]
 
